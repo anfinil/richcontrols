@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EA47FAF0-BAE2-454E-9F43-53D8B8BDFAB1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AnjLab.SharePoint.RichControls</RootNamespace>
+    <AssemblyName>AnjLab.SharePoint.RichControls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BB1F664B-9266-4fd6-B973-E1E44974B511};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SandboxedSolution>False</SandboxedSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.SharePoint.Client.ServerRuntime\14.0.0.0__71e9bce111e9429c\Microsoft.SharePoint.Client.ServerRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlTemplates\RichLookupFormField.ascx.cs">
+      <DependentUpon>RichLookupFormField.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlTemplates\RichLookupFormField.ascx.designer.cs">
+      <DependentUpon>RichLookupFormField.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlTemplates\RichLookupFieldEditor.ascx.cs">
+      <DependentUpon>RichLookupFieldEditor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlTemplates\RichLookupFieldEditor.ascx.designer.cs">
+      <DependentUpon>RichLookupFieldEditor.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fields\RichLookupField.cs" />
+    <Compile Include="Fields\RichLookupFieldControl.cs" />
+    <Compile Include="Fields\SPFieldExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AnjLab.SharePoint.RichControls.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnjLab.SharePoint.RichControls.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\AnjLab.SharePoint.RichControls.ru-ru.Designer.cs">
+      <DependentUpon>AnjLab.SharePoint.RichControls.ru-ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\DataService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ControlTemplates\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3482ab95-4957-434f-a46b-fdb61e9a21cd}</SharePointProjectItemId>
+    </None>
+    <None Include="ISAPI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cb686ce3-360d-4b9d-be87-7440989a6a90}</SharePointProjectItemId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{77ae084f-a054-4e0a-827a-92667c5cc899}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{a6ec4bc0-b36d-42f0-8898-572af0465bd8}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Resources\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f8d09d51-a498-4d3b-94e9-002706df1014}</SharePointProjectItemId>
+    </None>
+    <None Include="XML\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4067f8e1-5d38-4d97-9b1c-8ca5c1a20e7b}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ControlTemplates\RichLookupFormField.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ControlTemplates\RichLookupFieldEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ISAPI\RichControls\DataService.svc" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Layouts\RichControls\jquery\css\cupertino\jquery-ui-1.8.7.custom.css" />
+    <Content Include="Layouts\RichControls\jquery\js\jquery-1.5.1.min.js" />
+    <Content Include="Layouts\RichControls\jquery\js\jquery-ui-1.8.11.custom.min.js" />
+    <Content Include="Layouts\RichControls\rich-controls.css" />
+    <Content Include="Layouts\RichControls\rich-controls.js" />
+    <Content Include="Layouts\RichControls\ui-anim_basic_16x16.gif" />
+    <Content Include="XML\fldTypes_RichControls.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AnjLab.SharePoint.RichControls.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnjLab.SharePoint.RichControls.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AnjLab.SharePoint.RichControls.ru-ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnjLab.SharePoint.RichControls.ru-ru.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" />
+</Project>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Assemblies>
+    <Assembly DeploymentTarget="GlobalAssemblyCache" Location="AnjLab.SharePoint.RichControls.dll">
+      <SafeControls>
+        <SafeControl Assembly="$SharePoint.Project.AssemblyFullName$" 
+                     Namespace="AnjLab.SharePoint.RichControls.Fields"
+                     TypeName="*"
+                     Safe="True"/>
+      </SafeControls>
+    </Assembly>
+  </Assemblies>
+</Solution>

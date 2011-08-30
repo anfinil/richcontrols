@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="a6ec4bc0-b36d-42f0-8898-572af0465bd8" solutionId="a6ec4bc0-b36d-42f0-8898-572af0465bd8" resetWebServer="false" name="AnjLab.SharePoint.RichControls" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <projectItems>
+    <projectItemReference itemId="cb686ce3-360d-4b9d-be87-7440989a6a90" />
+    <projectItemReference itemId="77ae084f-a054-4e0a-827a-92667c5cc899" />
+    <projectItemReference itemId="3482ab95-4957-434f-a46b-fdb61e9a21cd" />
+    <projectItemReference itemId="4067f8e1-5d38-4d97-9b1c-8ca5c1a20e7b" />
+    <projectItemReference itemId="f8d09d51-a498-4d3b-94e9-002706df1014" />
+  </projectItems>
+</package>
