@@ -7,16 +7,14 @@
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RichLookupFormField.ascx.cs" Inherits="AnjLab.SharePoint.RichControls.ControlTemplates.RichLookupFormField" %>
 
-<%-- <script type="text/javascript">
-     window.jQuery || document.write('<script src="/_layouts/RichControls/jquery/js/jquery-1.5.1.min.js">\x3C/script>');
-     window.jQuery.widget || document.write('<script src="/_layouts/RichControls/jquery/js/jquery-ui-1.8.7.custom.min.js">\x3C/script>');
-     
- </script>--%>
+<script type="text/javascript">
+    if (!window.jQuery) {
+        document.write('<script src="/_layouts/RichControls/jquery/js/jquery-1.5.1.min.js">\x3C/script>');
+    } 
+ </script>
 
- <script type="text/javascript" src="/_layouts/RichControls/jquery/js/jquery-1.5.1.min.js"></script>
  <script type="text/javascript" src="/_layouts/RichControls/jquery/js/jquery-ui-1.8.11.custom.min.js"></script>
  <script type="text/javascript" src="/_layouts/RichControls/rich-controls.js?1.1.17"></script>
-<%--<SharePoint:ScriptLink runat="server" Name="/_layouts/RichControls/rich-controls.js?1.1.17"/>--%>
 <SharePoint:CssRegistration runat="server" Name="/_layouts/RichControls/jquery/css/cupertino/jquery-ui-1.8.7.custom.css"/>
 <SharePoint:CssRegistration runat="server" Name="/_layouts/RichControls/rich-controls.css?1.0.5"/>
 
