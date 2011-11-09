@@ -216,22 +216,23 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
             if (Field == null && string.IsNullOrEmpty(ListUrl))
                 throw new ArgumentException("Field or ListUrl is not specified.");
 
-            var web = SPContext.Current.Web;
-
-            web.Lists.ListsForCurrentUser = true;
-
-            foreach (var list in  web.Lists.Cast<SPList>())
+            using(var web = SPContext.Current.Site.OpenWeb(Field == null ? SPContext.Current.Web.ID : Field.LookupWebId))
             {
-                if (Field != null)
-                {
-                    if (list.ID == new Guid(Field.LookupList))
-                        return theList = list;
-                }
+                web.Lists.ListsForCurrentUser = true;
 
-                if (!string.IsNullOrEmpty(ListUrl))
+                foreach (var list in  web.Lists.Cast<SPList>())
                 {
-                    if (list.DefaultViewUrl.StartsWith(GetListUrl(web, ListUrl)))
-                        return theList = list;
+                    if (Field != null)
+                    {
+                        if (list.ID == new Guid(Field.LookupList))
+                            return theList = list;
+                    }
+
+                    if (!string.IsNullOrEmpty(ListUrl))
+                    {
+                        if (list.DefaultViewUrl.StartsWith(GetListUrl(web, ListUrl)))
+                            return theList = list;
+                    }
                 }
             }
 

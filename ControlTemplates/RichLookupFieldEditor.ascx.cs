@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using AnjLab.SharePoint.RichControls.Fields;
 using Microsoft.SharePoint;
 using Microsoft.SharePoint.WebControls;
@@ -13,6 +15,9 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
         protected void Page_Load(object sender, EventArgs e)
         {
             EnsureChildControls();
+
+            //webDropDownList.Items.AddRange(SPContext.Current.Site.AllWebs.Select(
+            //    w => new ListItem(w.Title, w.ID.ToString())).ToArray());
         }
 
         public void InitializeWithField(SPField field)
@@ -30,6 +35,13 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
             titleFieldTextBox.Text = field.GetFieldAttribute("TitleField");
             valueFieldTextBox.Text = field.GetFieldAttribute("ValueField");
             descriptionFieldsTextBox.Text = field.GetFieldAttribute("DescriptionFields");
+
+            var lookupField = field as SPFieldLookup;
+            if (lookupField == null) return;
+
+            //webDropDownList.SelectedValue = Guid.Empty == lookupField.LookupWebId
+            //                                    ? SPContext.Current.Web.ID.ToString()
+            //                                    : lookupField.LookupWebId.ToString();
         }
 
         protected override void CreateChildControls()
@@ -63,5 +75,10 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
                 return _lookupFieldEditor.DisplayAsNewSection;
             }
         }
+
+        //protected void WebDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+            
+        //}
     }
 }

@@ -33,4 +33,7 @@
 <div>
     Filter CAML: <asp:TextBox ID="filterTextBox" runat="server" Width="100%" TextMode="MultiLine" Rows="3" CssClass="ms-input" />
 </div>
+<%--<div>
+    Web site that contains the list that is the source of this field's value: <asp:DropDownList ID="webDropDownList" runat="server" Width="100%" CssClass="ms-input" DataTextField="Name" DataValueField="ID" AutoPostBack="True" OnSelectedIndexChanged="WebDropDownList_SelectedIndexChanged" />
+</div>--%>
 <br />
