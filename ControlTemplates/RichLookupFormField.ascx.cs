@@ -43,7 +43,11 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
 
         public SPFieldLookup Field { get; set; }
 
-        public string ListUrl { get; set; }
+        public string ListUrl
+        {
+            get { return (string) ViewState["ListUrl"]; } 
+            set { ViewState["ListUrl"] = value; }
+        }
 
         private bool allowMultipleValues;
         public bool AllowMultipleValues
@@ -72,7 +76,7 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
             {
                 var list = GetList();
 
-                return list != null ? list.ParentWeb.ID.ToString() : SPContext.Current.Web.ID.ToString();
+                return list != null ? list.ParentWeb.ID.ToString() : DefaultWebId.ToString();
             }
         }
 
@@ -206,8 +210,31 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
             }
         }
 
+        private SPWeb theWeb;
         private SPList theList;
         private bool listAccessDenied;
+
+        public Guid DefaultWebId
+        {
+            get
+            {
+                var defaultWebId = ViewState["DefaultWebId"];
+                return defaultWebId == null || ((Guid) defaultWebId).Equals(Guid.Empty) 
+                    ? SPContext.Current.Web.ID : (Guid) defaultWebId;
+            }
+            set
+            {
+                ViewState["DefaultWebId"] = value;
+            }
+        }
+
+        private SPWeb GetWeb()
+        {
+            if(theWeb == null)
+                return theWeb = SPContext.Current.Site.OpenWeb(Field == null ? DefaultWebId : Field.LookupWebId);
+
+            return theWeb;
+        }
 
         private SPList GetList()
         {
@@ -216,25 +243,24 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
             if (Field == null && string.IsNullOrEmpty(ListUrl))
                 throw new ArgumentException("Field or ListUrl is not specified.");
 
-            using(var web = SPContext.Current.Site.OpenWeb(Field == null ? SPContext.Current.Web.ID : Field.LookupWebId))
+            var web = GetWeb();
+            web.Lists.ListsForCurrentUser = true;
+
+            foreach (var list in web.Lists.Cast<SPList>())
             {
-                web.Lists.ListsForCurrentUser = true;
-
-                foreach (var list in  web.Lists.Cast<SPList>())
+                if (Field != null)
                 {
-                    if (Field != null)
-                    {
-                        if (list.ID == new Guid(Field.LookupList))
-                            return theList = list;
-                    }
+                    if (list.ID == new Guid(Field.LookupList))
+                        return theList = list;
+                }
 
-                    if (!string.IsNullOrEmpty(ListUrl))
-                    {
-                        if (list.DefaultViewUrl.StartsWith(GetListUrl(web, ListUrl)))
-                            return theList = list;
-                    }
+                if (!string.IsNullOrEmpty(ListUrl))
+                {
+                    if (list.DefaultViewUrl.StartsWith(GetListUrl(web, ListUrl)))
+                        return theList = list;
                 }
             }
+
 
             listAccessDenied = true;
             return null;
@@ -248,7 +274,7 @@ namespace AnjLab.SharePoint.RichControls.ControlTemplates
         public static string GetListUrl(string webRelativeUrl, string listUrl)
         {
             if (webRelativeUrl[webRelativeUrl.Length - 1] != '/') return (webRelativeUrl + '/' + listUrl);
-            else return (webRelativeUrl + listUrl); // Root web case
+            return (webRelativeUrl + listUrl); // Root web case
         }
     }
 }
