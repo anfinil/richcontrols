@@ -24,12 +24,12 @@
 <% if(!string.IsNullOrEmpty(MaxHeight)) {%>
 <style>
 	.ui-autocomplete {
-		max-height: <%= MaxHeight %>;
+		max-height: <%= MaxHeight %>px;
 		overflow-y: auto;
 		overflow-x: hidden;
 	}
 	* html .ui-autocomplete {
-		height: <%= MaxHeight %>;
+		height: <%= MaxHeight %>px;
 	}
 </style>
 <%} %>
